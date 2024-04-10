@@ -1,0 +1,5 @@
+[run]
+omit = ./app/test/*
+
+[report]
+omit = ./app/test/*
