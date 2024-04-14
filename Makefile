@@ -14,6 +14,10 @@ start-database:
 	python3 manage.py db migrate
 	python3 manage.py db upgrade
 
+update-database:
+	python3 manage.py db migrate
+	python3 manage.py db upgrade
+
 start-app:
 	export FLASK_ENV=development 
 	python3 manage.py run
