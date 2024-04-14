@@ -1,5 +1,6 @@
 from app.common.http_methods import GET, POST, PUT
 from flask import Blueprint, jsonify
+from app.utils.services_responses import services_not_suported_response
 
 class AbstractService(Blueprint):
     def template_service(self, name, import_name):
@@ -11,15 +12,15 @@ class AbstractService(Blueprint):
         return self
     
     def create(self) -> tuple:
-        return jsonify({'error': f'Method not suported for {self.name}'}), 501
+        return services_not_suported_response(self)
     
-    def update(self) -> tuple:
-        return jsonify({'error': f'Method not suported for {self.name}'}), 501
+    def update(self, _id) -> tuple:
+        return services_not_suported_response(self)
     
-    def get_by_id(self) -> tuple:
-        return jsonify({'error': f'Method not suported for {self.name}'}), 501
+    def get_by_id(self, _id) -> tuple:
+        return services_not_suported_response(self)
     
     def get(self) -> tuple:
-        return jsonify({'error': f'Method not suported for {self.name}'}), 501
+        return services_not_suported_response(self)
 
     
