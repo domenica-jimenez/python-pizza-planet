@@ -1,5 +1,6 @@
 from app.services.templates.abstract_service import AbstractService
-from flask import jsonify, request
+from flask import request
+from app.utils.services_responses import services_response
 
 class OrderService(AbstractService):
     def __init__(self, controller):
@@ -7,18 +8,12 @@ class OrderService(AbstractService):
 
     def create(self) -> tuple:
         product, error = self.controller.create(request.json)
-        response = product if not error else {'error': error}
-        status_code = 200 if not error else 400
-        return jsonify(response), status_code
+        return services_response(product, error)
     
     def get_by_id(self, _id: int) -> tuple:
         product, error = self.controller.get_by_id(_id)
-        response = product if not error else {'error': error}
-        status_code = 200 if product else 404 if not error else 400
-        return jsonify(response), status_code
+        return services_response(product, error)
     
     def get(self) -> tuple:
         products, error = self.controller.get_all()
-        response = products if not error else {'error': error}
-        status_code = 200 if products else 404 if not error else 400
-        return jsonify(response), status_code
+        return services_response(products, error)
