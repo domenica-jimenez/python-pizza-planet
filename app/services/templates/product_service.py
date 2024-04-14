@@ -11,8 +11,8 @@ class ProductService(AbstractService):
         status_code = 200 if not error else 400
         return jsonify(response), status_code
     
-    def update(self) -> tuple:
-        product, error = self.controller.update(request.json)
+    def update(self, _id: int) -> tuple:
+        product, error = self.controller.update(_id, request.json)
         response = product if not error else {'error': error}
         status_code = 200 if not error else 400
         return jsonify(response), status_code

@@ -5,7 +5,7 @@ class AbstractService(Blueprint):
     def template_service(self, name, import_name):
         super().__init__(name, import_name)
         self.route('/', methods=POST)(self.create)
-        self.route('/', methods=PUT)(self.update)
+        self.route('/<_id>', methods=PUT)(self.update)
         self.route('/id/<_id>', methods=GET)(self.get_by_id)
         self.route('/', methods=GET)(self.get)
         return self
