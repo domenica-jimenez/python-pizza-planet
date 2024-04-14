@@ -13,8 +13,8 @@ def test_create_size_service(create_size):
 
 def test_update_size_service(client, create_size, size_uri):
     current_size = create_size.json
-    update_data = {**current_size, 'name': get_random_string(), 'price': get_random_price(1, 5)}
-    response = client.put(size_uri, json=update_data)
+    update_data = {'name': get_random_string(), 'price': get_random_price(1, 5)}
+    response = client.put(f'{size_uri}{current_size["_id"]}', json=update_data)
     pytest.assume(response.status.startswith('200'))
     updated_size = response.json
     for param, value in update_data.items():

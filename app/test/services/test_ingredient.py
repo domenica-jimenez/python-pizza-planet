@@ -13,8 +13,8 @@ def test_create_ingredient_service(create_ingredient):
 
 def test_update_ingredient_service(client, create_ingredient, ingredient_uri):
     current_ingredient = create_ingredient.json
-    update_data = {**current_ingredient, 'name': get_random_string(), 'price': get_random_price(1, 5)}
-    response = client.put(ingredient_uri, json=update_data)
+    update_data = {'name': get_random_string(), 'price': get_random_price(1, 5)}
+    response = client.put(f'{ingredient_uri}{current_ingredient["_id"]}', json=update_data)
     pytest.assume(response.status.startswith('200'))
     updated_ingredient = response.json
     for param, value in update_data.items():
