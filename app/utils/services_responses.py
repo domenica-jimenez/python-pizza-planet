@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify
 
 def services_response(data, error):
     response = data if not error else {'error': error}

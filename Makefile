@@ -14,16 +14,19 @@ start-database:
 	python3 manage.py db migrate
 	python3 manage.py db upgrade
 
-update-database:
+empty-database:
+	python3 manage.py delete
 	python3 manage.py db migrate
 	python3 manage.py db upgrade
+
+seeding-database:
+	python3 manage.py seeder
 
 start-app:
 	export FLASK_ENV=development 
 	python3 manage.py run
 
 start-app-windows:
-	set FLASK_ENV=development
 	python3 manage.py run
 
 run-test:
