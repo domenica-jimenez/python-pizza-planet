@@ -44,8 +44,8 @@ beverage_seeder = [
   "Fanta",
   "San Felipe", 
   "Inca Cola", 
-  "Agua", 
-  "Té helado"
+  "Water", 
+  "Ice Tea"
 ]
 
 user_seeder = create_fake_users()
