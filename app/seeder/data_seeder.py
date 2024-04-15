@@ -21,7 +21,7 @@ class DataSeeder():
         db.session.add(
           Size(
             name=size_seeder[index], 
-            price=get_random_price(10, 20)
+            price=get_random_price(1, 10)
           )
         )
     
@@ -30,7 +30,7 @@ class DataSeeder():
         db.session.add(
           Ingredient(
             name=ingredient_seeder[index], 
-            price=get_random_price(10, 20)
+            price=get_random_price(1, 10)
           )
         )
     
@@ -39,7 +39,7 @@ class DataSeeder():
         db.session.add(
           Beverage(
             name=beverage_seeder[index], 
-            price=get_random_price(10, 20)
+            price=get_random_price(1, 10)
           )
         )
     
@@ -55,7 +55,7 @@ class DataSeeder():
             client_address=user.get('client_address'),
             client_phone=user.get('client_phone'),
             date=fake.date_time_between(datetime(2023,1,1), datetime(2023,4,30)),
-            total_price=self.order_price_seeder(index+1, size),
+            total_price=round(self.order_price_seeder(index+1, size), 2),
             size_id=size,
           )
         )
